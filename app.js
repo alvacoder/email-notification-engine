@@ -8,6 +8,8 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 
+let sendgrid = require('sendgrid');
+
 var app = express();
 
 // view engine setup
