@@ -10,19 +10,20 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/:action', (req, res, next) => {
+router.post('/:action', (req, res, next) => {
     let action = req.params.action;
-    if(action === 'send') {
-        
+
+        if(action === 'send') {
+        let recipients = (req.body.recipients).split(',');
         const msg = {
-        to: 'idrisadeniji01@gmail.com',
-        from: 'noreply@email.com',
-        subject: 'Hello world',
+        to: recipients,
+        from: 'noreply@atbtechsoft.com',
+        subject: req.body.subject,
         text: 'hi',
-        html: '<p>Hello HTML world!</p>',
+        html: req.body.content,
         };
 
-        sgMail.send(msg);
+        sgMail.sendMultiple(msg);
         
         if(res.statusCode === 200) {
             return res.json({
@@ -35,7 +36,7 @@ router.get('/:action', (req, res, next) => {
         }
         
 
-        return next();
+        return  next();
     }
 })
 
