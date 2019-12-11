@@ -1,2 +1,27 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <title>Email Notification Engine</title>
+</head>
+<body>
+    <div class ="body">
+      <form action="http://localhost:3000/api/send" method="POST">
+          Recipients: <br>
+          <input type="textbox" name="recipients" id="" placeholder="Separated by comma"><br>
+          Subject: <br>
+          <input type="text" name="subject" id=""><br>
+          Content: <br>
+          <textarea name="content" id="" cols="30" rows="10"></textarea>
+          <button type="submit">Send Mail</button>
+      </form>
+    </div>
+    <script>
+        CKEDITOR.replace( 'content' );
+    </script>
+</body>
+
+</html>
