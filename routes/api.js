@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 let dotenv = require('dotenv');
-let fs = require('fs');
-const extract = require('mention-hashtag');
 dotenv.config();
 
 const sgMail = require('@sendgrid/mail');
@@ -19,10 +17,9 @@ router.post('/:action', (req, res, next) => {
 
             sgMail.sendMultiple(req.body)
             .then((data) => {
-                console.log(data);
+                //console.log(data);
                 res.json({
-                    Confirmation: 'Email successfully sent',
-                    data
+                    Confirmation: 'Email successfully sent'
                 })
             }).catch((error) => {
                 res.json({
